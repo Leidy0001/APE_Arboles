@@ -1,9 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class  RecorridoInOrder {
+public class RecorridoInOrder {
+
     public static void inOrderAux(Nodo nodo, List<Integer> resultado) {
-        // TODO: Implementa tu lógica de recorrido aquí
+        // Caso base
+        if (nodo == null) {
+            return;
+        }
+
+        // Izquierda → Raíz → Derecha
+        inOrderAux(nodo.izquierdo, resultado);
+        resultado.add(nodo.valor);
+        inOrderAux(nodo.derecho, resultado);
     }
 
     public static List<Integer> recorridoInOrder(Nodo raiz) {
@@ -30,4 +39,5 @@ public class  RecorridoInOrder {
         System.out.println("Resultado esperado: [1, 2, 3, 4, 5, 6, 7]");
         System.out.println("Tu resultado:       " + recorridoInOrder(raiz));
     }
+    //-------------
 }
