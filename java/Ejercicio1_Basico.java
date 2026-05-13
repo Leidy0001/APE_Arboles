@@ -18,9 +18,22 @@ class NodoN {
 }
 
 public class Ejercicio1_Basico {
+
     public static int contarNodos(NodoN raiz) {
-        // TODO: Implementa tu lógica aquí. (Pista: usa recursividad)
-        return 0; 
+        // Caso base: árbol vacío
+        if (raiz == null) {
+            return 0;
+        }
+
+        // Contamos el nodo actual
+        int total = 1;
+
+        // Recorremos todos los hijos
+        for (NodoN hijo : raiz.hijos) {
+            total += contarNodos(hijo);
+        }
+
+        return total;
     }
 
     public static void main(String[] args) {
@@ -36,7 +49,7 @@ public class Ejercicio1_Basico {
         NodoN n3 = new NodoN(3);
         NodoN n4 = new NodoN(4);
         NodoN raiz = new NodoN(1, Arrays.asList(n2, n3, n4));
-        
+
         System.out.println("--- Prueba Ejercicio 1 ---");
         System.out.println("Nodos esperados: 6");
         System.out.println("Nodos calculados: " + contarNodos(raiz));
