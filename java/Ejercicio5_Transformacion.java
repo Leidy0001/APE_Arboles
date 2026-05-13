@@ -1,6 +1,20 @@
 public class Ejercicio5_Transformacion {
+
     public static Nodo invertir(Nodo raiz) {
-        // TODO: Implementa tu lógica aquí
+        // Caso base
+        if (raiz == null) {
+            return null;
+        }
+
+        // Intercambiar hijos
+        Nodo temp = raiz.izquierdo;
+        raiz.izquierdo = raiz.derecho;
+        raiz.derecho = temp;
+
+        // Aplicar recursión en ambos subárboles
+        invertir(raiz.izquierdo);
+        invertir(raiz.derecho);
+
         return raiz;
     }
 
@@ -15,13 +29,16 @@ public class Ejercicio5_Transformacion {
         System.out.println("--- Prueba Ejercicio 5 ---");
         System.out.println("Antes de invertir:");
         System.out.println("Hijo Izq: " + raiz.izquierdo.valor + " | Hijo Der: " + raiz.derecho.valor);
-        
+
         invertir(raiz);
-        
+
         System.out.println("\nDespués de invertir (Esperado: Izq 3 | Der 2):");
+
         String izq = (raiz.izquierdo != null) ? String.valueOf(raiz.izquierdo.valor) : "null";
         String der = (raiz.derecho != null) ? String.valueOf(raiz.derecho.valor) : "null";
-        
+
         System.out.println("Hijo Izq: " + izq + " | Hijo Der: " + der);
     }
+
+    //---------
 }
